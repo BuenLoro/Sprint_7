@@ -6,7 +6,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
-import static ru.yandex.praktikum.scooter.ApiPath.*;
+import static ru.yandex.praktikum.scooter.constants.ApiPath.*;
 
 public class OrderSteps {
     public static RequestSpecification requestSpec() {

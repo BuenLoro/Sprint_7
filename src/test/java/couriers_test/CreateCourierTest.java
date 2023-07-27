@@ -1,4 +1,4 @@
-package couriersTest;
+package couriers_test;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
@@ -23,7 +23,7 @@ public class CreateCourierTest {
     public void setUp() {
         courierSteps = new CourierSteps();
         couriersCases = new CouriersCases();
-        courier = new Courier("lo7y8jjd8j9k0", "tgintlkin5gn");
+        courier = new Courier("12lo5d8j9k0", "tgintlkin5gn");
         RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru";
     }
 
@@ -32,7 +32,7 @@ public class CreateCourierTest {
     @Description("Проверяем, что курьера можно создать")
     public void courierCanBeCreatedTest() {
         ValidatableResponse responseCreateCourier = courierSteps.courierCreate(courier);
-        courierId = courierSteps.courierLogin(courier).extract().path("id"); // ???????
+        courierId = courierSteps.courierGetId(courier).extract().path("id");
         couriersCases.createCourierPassed(responseCreateCourier);
     }
 
@@ -40,14 +40,23 @@ public class CreateCourierTest {
     @DisplayName("Создание дублирующего курьера")
     @Description("Проверяем, что дублирующего курьера нельзя создать")
     public void createTwoIdenticalCouriersTest() {
-        ValidatableResponse responseCreateIdenticalCouriers = courierSteps.createCourierDuplicate(courier);
+        courier = new Courier("ninja", "1234");
+        ValidatableResponse responseCreateIdenticalCouriers = courierSteps.courierCreate(courier);
         couriersCases.createTwoIdenticalCouriersFailed(responseCreateIdenticalCouriers);
     }
 
     @Test
-    @DisplayName("Проверяем, что нельзя создать курьера, не заполнив все обязательные поля")
-    public void createCourierWithIncompleteDataTest(){
-        courier = new Courier("", "tgintlkin5gn");
+    @DisplayName("Проверяем, что нельзя создать курьера, не заполнив поле Логин")
+    public void createCourierWithoutLoginTest(){
+        courier = new Courier("", "1234");
+        ValidatableResponse response = courierSteps.createCourierWithoutFullInfoFailed(courier);
+        couriersCases.createCourierWithoutFullInfoFailed(response);
+    }
+
+    @Test
+    @DisplayName("Проверяем, что нельзя создать курьера, не заполнив поле Пароль")
+    public void createCourierWithoutPasswordTest() {
+        courier = new Courier("saske", "");
         ValidatableResponse response = courierSteps.createCourierWithoutFullInfoFailed(courier);
         couriersCases.createCourierWithoutFullInfoFailed(response);
     }
@@ -57,6 +66,9 @@ public class CreateCourierTest {
     public void deleteCourier() {
         if (courierId != 0) {
             courierSteps.courierDelete(courierId);
+            System.out.println("DELETED");
+        } else {
+            System.out.println("NOT DELETED");
         }
     }
 }

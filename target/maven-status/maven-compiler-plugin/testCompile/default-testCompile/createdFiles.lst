@@ -1,4 +1,4 @@
-orderTest/GetOrderListTest.class
-couriersTest/CreateCourierTest.class
-orderTest/CreateOrderTest.class
-couriersTest/LoginCourierTest.class
+order_test/GetOrderListTest.class
+couriers_test/CreateCourierTest.class
+couriers_test/LoginCourierTest.class
+order_test/CreateOrderTest.class

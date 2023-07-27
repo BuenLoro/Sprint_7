@@ -6,8 +6,7 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
-import static ru.yandex.praktikum.scooter.ApiPath.COURIER_LOGIN;
-import static ru.yandex.praktikum.scooter.ApiPath.NEW_COURIER;
+import static ru.yandex.praktikum.scooter.constants.ApiPath.*;
 
 
 public class CourierSteps {
@@ -19,16 +18,6 @@ public class CourierSteps {
     @Step("Создание курьера")
     public ValidatableResponse courierCreate(Courier courier){
         return getRequest()
-                .header("Content-type", "application/json")
-                .body(courier)
-                .when()
-                .post(NEW_COURIER)
-                .then();
-    }
-
-    @Step("Создание дублирующего курьера")
-    public ValidatableResponse createCourierDuplicate(Courier courier){
-        return given()
                 .header("Content-type", "application/json")
                 .body(courier)
                 .when()
@@ -78,7 +67,7 @@ public class CourierSteps {
     @Step("Удаление курьера")
     public void courierDelete(int id){
         given()
-                .delete(NEW_COURIER + id)
+                .delete(NEW_COURIER + "/" + id)
                 .then();
     }
 }

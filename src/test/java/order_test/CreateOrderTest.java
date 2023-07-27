@@ -1,9 +1,8 @@
-package orderTest;
+package order_test;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import org.hamcrest.CoreMatchers;
 import org.junit.After;
@@ -15,7 +14,6 @@ import ru.yandex.praktikum.scooter.order.Order;
 import ru.yandex.praktikum.scooter.order.OrderSteps;
 
 import java.util.List;
-import java.util.Objects;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;

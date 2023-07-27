@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.scooter;
+package ru.yandex.praktikum.scooter.constants;
 
 public class ApiPath {
     public static final String NEW_COURIER = "/api/v1/courier";

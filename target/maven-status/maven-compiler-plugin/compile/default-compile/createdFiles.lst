@@ -1,5 +1,5 @@
 ru/yandex/praktikum/scooter/couriers/Courier.class
-ru/yandex/praktikum/scooter/ApiPath.class
+ru/yandex/praktikum/scooter/constants/ApiPath.class
 ru/yandex/praktikum/scooter/order/Order.class
 ru/yandex/praktikum/scooter/couriers/CourierSteps.class
 ru/yandex/praktikum/scooter/couriers/CouriersCases.class
